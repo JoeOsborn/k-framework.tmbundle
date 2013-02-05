@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>contactEmailRot13</key>
+	<string>wbr.bfobea@znp.pbz</string>
+	<key>contactName</key>
+	<string>Joseph Carter Osborn</string>
+	<key>description</key>
+	<string>Syntax and commands for the K semantic framework. 
+
+http://k-framework.org</string>
+	<key>name</key>
+	<string>K-Framework</string>
+	<key>uuid</key>
+	<string>7A6880B5-C4B9-44BD-8053-8E089F7ADDDA</string>
+</dict>
+</plist>
