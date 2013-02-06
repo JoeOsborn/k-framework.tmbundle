@@ -496,7 +496,7 @@
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>^(?=\s*[a-z])</string>
+			<string>^(?=(?:\s*[a-z]))</string>
 			<key>name</key>
 			<string>meta.configuration.k-framework</string>
 			<key>patterns</key>
@@ -529,7 +529,7 @@
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>^(?=\s*(?!(?:when)|(?:where))[a-z])</string>
+			<string>^(?=(?:\s*(?!(?:when)|(?:where))[a-z]))</string>
 			<key>name</key>
 			<string>meta.define.k-framework</string>
 			<key>patterns</key>
@@ -669,7 +669,7 @@
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>^(?=\s*[a-z])</string>
+			<string>^(?=(?:\s*[a-z]))</string>
 			<key>name</key>
 			<string>meta.structure.macro.k-framework</string>
 			<key>patterns</key>
@@ -739,7 +739,7 @@
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>^(?=\s*(?!(?:when)|(?:where))[a-z])</string>
+			<string>^(?=(?:\s*(?!(?:when)|(?:where))[a-z]))</string>
 			<key>name</key>
 			<string>meta.rule.k-framework</string>
 			<key>patterns</key>
@@ -871,7 +871,7 @@
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>^(?=\s*[a-z])</string>
+			<string>^(?=(?:\s*[a-z]))</string>
 			<key>name</key>
 			<string>meta.structure.syntax.k-framework</string>
 			<key>patterns</key>
@@ -966,7 +966,7 @@
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>(?!&lt;/)(?!:[A-Z])(?!_\s)(?!\=\&gt;)(?!\~\&gt;)([\,\|]|(?:(?:['.*\-/+`:\^_=?\&gt;&lt;]+)|(?:(?=\b)[a-z]))[a-zA-Z0-9_\-]*)(?&lt;!\,\_)(\()</string>
+					<string>(?!&lt;/)(?!:[A-Z])(?!_[\s:])(?!\=\&gt;)(?!\~\&gt;)([\,\|]|(?:(?:['.*\-/+`:\^_=?\&gt;&lt;]+)|(?:(?=\b)[a-z]))[a-zA-Z0-9_\-]*)(?&lt;!\,\_)(\()</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -1026,7 +1026,7 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>(?!&lt;/)(?!:[A-Z])(?!_\s)(?!\=\&gt;)(?!\~\&gt;)([\,\|]|(?:(?:[_'.*`\-/+:\^=?\|&gt;&lt;]+)|(?:(?=\b)[a-z]))[a-zA-Z0-9_\-]*)(?&lt;!\,\_)(?&lt;!\()</string>
+					<string>(?!&lt;/)(?!:[A-Z])(?!_[\s:])(?!\=\&gt;)(?!\~\&gt;)([\,\|]|(?:(?:[_'.*`\-/+:\^=?\|&gt;&lt;]+)|(?:(?=\b)[a-z]))[a-zA-Z0-9_\-]*)(?&lt;!\,\_)(?&lt;!\()</string>
 					<key>name</key>
 					<string>meta.terminal.k-framework</string>
 				</dict>
@@ -1049,10 +1049,6 @@
 		<dict>
 			<key>patterns</key>
 			<array>
-				<dict>
-					<key>include</key>
-					<string>#syntax-term-terminal</string>
-				</dict>
 				<dict>
 					<key>captures</key>
 					<dict>
@@ -1112,6 +1108,10 @@
 					<string>\s\.\s</string>
 					<key>name</key>
 					<string>entity.other.type.syntax.unit.generic.k-framework</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#syntax-term-terminal</string>
 				</dict>
 			</array>
 		</dict>
