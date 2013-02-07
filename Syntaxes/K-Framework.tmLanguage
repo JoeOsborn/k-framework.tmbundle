@@ -44,7 +44,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>^\s*(module)\s+([a-zA-Z0-9_-]+)\s*$</string>
+			<string>\b(module)\s+([a-zA-Z0-9_-]+)\s*$</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -59,7 +59,7 @@
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>^\s*(end(?:\s)*module)\s*$</string>
+			<string>\b(end(?:\s)*module)\s*$</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
@@ -95,6 +95,10 @@
 				<dict>
 					<key>include</key>
 					<string>#rule</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#context</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -496,7 +500,7 @@
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>^(?=(?:\s*[a-z]))</string>
+			<string>\b(?=(rule|syntax|configuration|context|macro|endmodule|define))</string>
 			<key>name</key>
 			<string>meta.configuration.k-framework</string>
 			<key>patterns</key>
@@ -508,6 +512,59 @@
 				<dict>
 					<key>include</key>
 					<string>#cell</string>
+				</dict>
+			</array>
+		</dict>
+		<key>context</key>
+		<dict>
+			<key>begin</key>
+			<string>(context)</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.def.context.k-framework</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.context.k-framework</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>\b(?=(rule|syntax|configuration|context|macro|endmodule|define))</string>
+			<key>name</key>
+			<string>meta.context.k-framework</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comments</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>when</string>
+					<key>name</key>
+					<string>keyword.control.def.context.when</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>where</string>
+					<key>name</key>
+					<string>keyword.control.def.context.where</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#attrs</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#rewrites</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#rule-cell</string>
 				</dict>
 			</array>
 		</dict>
@@ -529,7 +586,7 @@
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>^(?=(?:\s*(?!(?:when)|(?:where))[a-z]))</string>
+			<string>\b(?=(rule|syntax|configuration|context|macro|endmodule|define))</string>
 			<key>name</key>
 			<string>meta.define.k-framework</string>
 			<key>patterns</key>
@@ -542,13 +599,13 @@
 					<key>match</key>
 					<string>when</string>
 					<key>name</key>
-					<string>keyword.control.def.rule.when</string>
+					<string>keyword.control.def.define.when</string>
 				</dict>
 				<dict>
 					<key>match</key>
 					<string>where</string>
 					<key>name</key>
-					<string>keyword.control.def.rule.where</string>
+					<string>keyword.control.def.define.where</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -613,7 +670,7 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>^\s*(imports)\s+(\#?[a-zA-Z0-9_-]+)\s*$</string>
+			<string>\b(imports)\s+(\#?[a-zA-Z0-9_-]+)\s*$</string>
 			<key>name</key>
 			<string>meta.import.k-framework</string>
 		</dict>
@@ -659,7 +716,7 @@
 		<key>macro</key>
 		<dict>
 			<key>begin</key>
-			<string>^\s*(macro)\s+</string>
+			<string>\b(macro)\s+</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -669,7 +726,7 @@
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>^(?=(?:\s*[a-z]))</string>
+			<string>\b(?=(rule|syntax|configuration|context|macro|endmodule|define))</string>
 			<key>name</key>
 			<string>meta.structure.macro.k-framework</string>
 			<key>patterns</key>
@@ -739,7 +796,7 @@
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>^(?=(?:\s*(?!(?:when)|(?:where))[a-z]))</string>
+			<string>\b(?=(rule|syntax|configuration|context|macro|endmodule|define))</string>
 			<key>name</key>
 			<string>meta.rule.k-framework</string>
 			<key>patterns</key>
@@ -851,7 +908,7 @@
 		<key>syntax</key>
 		<dict>
 			<key>begin</key>
-			<string>^\s*(syntax)\s+(\#?[A-Z][A-Za-z]*)\s*(\:\:\=)\s</string>
+			<string>\b(syntax)\s+(\#?[A-Z][A-Za-z]*)\s*(\:\:\=)</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -871,7 +928,7 @@
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>^(?=(?:\s*[a-z]))</string>
+			<string>(?=(?:^\s*(?:(rule|syntax|configuration|context|macro|endmodule|define))))</string>
 			<key>name</key>
 			<string>meta.structure.syntax.k-framework</string>
 			<key>patterns</key>
@@ -905,7 +962,7 @@
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>(?:(?=[\|\&gt;\&lt;])|^(?=\s*[a-z]))</string>
+			<string>(?:(?=[\|\&gt;\&lt;])|^(?=(?:\s*(?:(rule|syntax|configuration|context|macro|endmodule|define)))))</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
@@ -1049,6 +1106,12 @@
 		<dict>
 			<key>patterns</key>
 			<array>
+				<dict>
+					<key>match</key>
+					<string>HOLE</string>
+					<key>name</key>
+					<string>constant.language.hole.k-framework</string>
+				</dict>
 				<dict>
 					<key>captures</key>
 					<dict>
