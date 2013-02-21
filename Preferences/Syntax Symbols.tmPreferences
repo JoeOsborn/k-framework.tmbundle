@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>name</key>
+	<string>Syntax Symbols</string>
+	<key>scope</key>
+	<string>source.k-framework entity.name.type.syntax.k-framework</string>
+	<key>settings</key>
+	<dict>
+		<key>showInSymbolList</key>
+		<integer>1</integer>
+		<key>symbolTransformation</key>
+		<string>s/^(.*)/  syntax $1/</string>
+	</dict>
+	<key>uuid</key>
+	<string>7303DF87-65F4-4918-9662-5762E195F057</string>
+</dict>
+</plist>

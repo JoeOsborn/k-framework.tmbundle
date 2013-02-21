@@ -299,7 +299,7 @@
 		<key>cell</key>
 		<dict>
 			<key>begin</key>
-			<string>(&lt;([\w]+)\s*([^&gt;]+)?&gt;)</string>
+			<string>(&lt;([\w\-]+)\s*([^&gt;]+)?&gt;)</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -781,7 +781,7 @@
 		<key>rule</key>
 		<dict>
 			<key>begin</key>
-			<string>(rule)</string>
+			<string>(rule)(?:\s*(\[)([^\]]+)(\])\s*(:))?</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -792,13 +792,28 @@
 				<key>2</key>
 				<dict>
 					<key>name</key>
+					<string>punctuation.definition.entity.name.rule.begin.k-framework</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
 					<string>entity.name.rule.k-framework</string>
+				</dict>
+				<key>4</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.entity.name.rule.end.k-framework</string>
+				</dict>
+				<key>5</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.entity.rule.k-framework</string>
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>\b(?=(rule|syntax|configuration|context|macro|endmodule|define))</string>
+			<string>(?=(?:\b(rule|syntax|configuration|context|macro|endmodule|define)))</string>
 			<key>name</key>
-			<string>meta.rule.k-framework</string>
+			<string>meta.structure.rule.k-framework</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -819,6 +834,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#br</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#rule-cell</string>
 				</dict>
 				<dict>
@@ -834,7 +853,7 @@
 		<key>rule-cell</key>
 		<dict>
 			<key>begin</key>
-			<string>(&lt;([\w]+)&gt;)\s*(\.\.\.)?</string>
+			<string>(&lt;([\w\-]+)&gt;)\s*(\.\.\.)?</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -877,6 +896,10 @@
 			<string>meta.rule.cell.k-framework</string>
 			<key>patterns</key>
 			<array>
+				<dict>
+					<key>include</key>
+					<string>#br</string>
+				</dict>
 				<dict>
 					<key>include</key>
 					<string>#rule-cell</string>
@@ -1044,7 +1067,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.parameters.begin.terminal.k-framework</string>
+							<string>punctuation.definition.parameters.end.terminal.k-framework</string>
 						</dict>
 					</dict>
 					<key>name</key>
